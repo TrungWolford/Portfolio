@@ -1131,3 +1131,206 @@ button {
     font-size: 13px;
   }
 }
+
+/* ===========================
+   DOCUMEET CASE STUDY PAGE
+=========================== */
+.documeet-header {
+  padding: clamp(50px, 7vw, 90px) 0 50px;
+  background: radial-gradient(circle at 50% 0%, rgba(30, 58, 138, 0.22), transparent 70%), var(--bg-dark);
+  color: var(--text-light);
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.documeet-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-light);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 28px;
+  transition: all var(--transition-fast);
+}
+
+.documeet-back-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent-light);
+  color: #ffffff;
+  transform: translateX(-4px);
+}
+
+.documeet-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(45, 106, 79, 0.25);
+  color: var(--accent-light);
+  border: 1px solid rgba(82, 183, 136, 0.4);
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 20px;
+}
+
+.documeet-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(34px, 5.5vw, 56px);
+  color: var(--text-light);
+  line-height: 1.15;
+  margin-bottom: 18px;
+  letter-spacing: -0.5px;
+}
+
+.documeet-subtitle {
+  font-size: clamp(16px, 2.2vw, 20px);
+  color: var(--text-light-muted);
+  max-width: 780px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+.documeet-hero-img-container {
+  max-width: 940px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: var(--bg-dark);
+}
+
+.documeet-hero-img-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Alternating Rows Section */
+.documeet-content-section {
+  padding: clamp(60px, 8vw, 100px) 0;
+  background: var(--bg-light);
+}
+
+.alternating-container {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.alternating-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  background: #ffffff;
+  padding: 36px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.alternating-row:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.row-img-wrapper {
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  background: var(--bg-dark);
+  border: 1px solid var(--border-light);
+}
+
+.row-img-wrapper img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-slow);
+}
+
+.alternating-row:hover .row-img-wrapper img {
+  transform: scale(1.03);
+}
+
+.row-text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.row-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.row-heading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(20px, 2.8vw, 26px);
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+
+.row-desc {
+  font-size: clamp(15px, 1.8vw, 17px);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.row-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.row-badge-item {
+  padding: 5px 14px;
+  background: rgba(45, 106, 79, 0.08);
+  color: var(--accent);
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid rgba(45, 106, 79, 0.15);
+}
+
+@media (max-width: 900px) {
+  .alternating-row {
+    grid-template-columns: 1fr !important;
+    gap: 28px;
+    padding: 24px;
+  }
+  
+  .alternating-row.reverse .row-text-content {
+    order: 2;
+  }
+  .alternating-row.reverse .row-img-wrapper {
+    order: 1;
+  }
+  
+  .row-img-wrapper img {
+    height: 250px;
+  }
+}
+

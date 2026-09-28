@@ -105,8 +105,8 @@ function renderFeaturedProjects() {
 
   grid.innerHTML = featuredProjects.map((p) => {
     const isPlaceholder = p.isPlaceholder;
-    const cardLink = p.github ? p.github : '#projects';
-    const target = p.github ? 'target="_blank" rel="noopener"' : '';
+    const cardLink = p.url ? p.url : (p.github ? p.github : '#projects');
+    const target = p.url ? '' : (p.github ? 'target="_blank" rel="noopener"' : '');
 
     return `
       <a href="${cardLink}" ${target} class="featured-card" aria-label="View ${p.name}" style="${isPlaceholder ? 'opacity: 0.5; pointer-events: none;' : ''}">
@@ -141,10 +141,12 @@ function renderProjects() {
         </a>`
       : '';
 
+    const isExternalDemo = p.demo && p.demo.startsWith('http');
+    const demoLabel = p.demo && p.demo.endsWith('.html') ? 'Read Case Study' : 'Live Demo';
     const demoBtn = p.demo
-      ? `<a href="${p.demo}" target="_blank" rel="noopener" class="project-link-btn" aria-label="View live demo of ${p.name}" onclick="event.stopPropagation()">
+      ? `<a href="${p.demo}" ${isExternalDemo ? 'target="_blank" rel="noopener"' : ''} class="project-link-btn" aria-label="View demo of ${p.name}" onclick="event.stopPropagation()">
           <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-          Live Demo
+          ${demoLabel}
         </a>`
       : '';
 
@@ -152,8 +154,9 @@ function renderProjects() {
       `<span class="project-tag">${t}</span>`
     ).join('');
 
-    const cardHref = p.github || p.demo || '#';
-    const target = (p.github || p.demo) ? 'target="_blank" rel="noopener"' : '';
+    const cardHref = p.url || p.demo || p.github || '#';
+    const isExternalCard = cardHref.startsWith('http');
+    const target = isExternalCard ? 'target="_blank" rel="noopener"' : '';
 
     return `
       <a href="${cardHref}" ${target} class="project-card" id="project-${p.id}" aria-label="${p.name} — ${p.tagline}">
